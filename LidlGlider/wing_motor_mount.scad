@@ -1,4 +1,6 @@
-
+//$fn=60;
+$fa=5;
+$fs=.4;
 
 hole_cut_height = 20;
 main_part_height = 5;
