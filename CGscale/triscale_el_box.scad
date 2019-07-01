@@ -6,7 +6,7 @@ hex_nut_hole = 6.4;
 
 main_box();
 
-translate([0,0,22]){
+translate([0,0,28.5]){
     rotate([0,180,0]){
         box_lid();
     }
@@ -15,13 +15,22 @@ translate([0,0,22]){
 module box_lid(){
     difference(){
         union(){
-            linear_extrude(height=2) offset(r=2) base_shape();
-            linear_extrude(height=4.5) offset(r=-.6) base_shape();
-            translate([-19.4,29.4,0]) cube([38.8,2.6,10]);
+            difference(){    
+                union(){
+                    linear_extrude(height=8) offset(r=2) base_shape();
+                    linear_extrude(height=10.5) offset(r=-.6) base_shape();
+                }
+                translate([0,0,2]) linear_extrude(height=15) offset(r=-2.6) base_shape();
+            }
+            translate([20,-5,0]) cylinder(d=8,h=10.5);
+            translate([-20,-5,0]) cylinder(d=8,h=10.5);
+            
+            translate([-19.4,28,0]) cube([38.8,4,15]);
         }
         translate([20,-5,-1]) cylinder(d=3.5,h=30);
         translate([-20,-5,-1]) cylinder(d=3.5,h=30);
-        translate([-7.5,-30,-1]) cube([15,10,10]);
+        translate([-7.5,-30,2]) cube([18,10,10]);
+        translate([-1.25,15,8]) cube([2.5,20,10]);
     }
 }
 
@@ -48,7 +57,6 @@ module main_box(){
         translate([-20,-5,-1]) cylinder(d=3.5,h=30);
         
         translate([20,-5,-1]) cylinder(d=hex_nut_hole,h=11,$fn=6);
-        
         translate([-20,-5,-1]) cylinder(d=hex_nut_hole,h=11,$fn=6);
     }
 }
