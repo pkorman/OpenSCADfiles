@@ -3,7 +3,7 @@ $fa=5;
 $fs=.4;
 
 main();
-translate([0,0,4.7]) rotate([180,0,0]) main();
+translate([17.5/*0*/,0,0/*4.7*/]) rotate([/*18*/0,0,180/*0*/]) main();
 
 module main() {
     difference(){
