@@ -5,20 +5,20 @@ $fs=.4;
 wall_thickness = 1.2;
 
 translate([0,0,-2]) rotate([180,0,0]) mount_on_fuselage();
-//translate([0,0,4]) rotate([180,0,0]) motor_mount_0();
-translate([0,0,4]) rotate([180,0,0]) motor_mount_1();
+translate([14,18,0]) rotate([0,0,180]) motor_mount_0();
+translate([0,-18,0]) rotate([0,0,0]) motor_mount_1();
 
 module motor_mount_1(){
     difference(){
         motor_mount_base();
-        motor_holes(2.5,3,19,19,0);
+        motor_holes(3,4,20,20,0);
     }
 }
 
 module motor_mount_0(){
     difference(){
         motor_mount_base();
-        motor_holes(3.5,7,18,16,45);
+        motor_holes(2.4,4,16,12,45);
     }
 }
 
@@ -47,15 +47,16 @@ module motor_holes(hole_diameter, x_shift, x_distance, y_distance, z_angle){
 }
 
 module motor_boundary() {
+    motor_perimeter = 23;
     difference() {
-                cylinder(h=0.5,d=28);
-                cylinder(h=0.5,d=27);
+                cylinder(h=0.5,d=motor_perimeter);
+                cylinder(h=0.5,d=motor_perimeter-1);
     }
 }
 
 module mounting_spacers(up_x, up_y, bot_x){
-    spacer_diameter = 6;
-    spacer_height = 5;
+    spacer_diameter = 8;
+    spacer_height = 4.5;
     translate([-up_x,up_y,0]) cylinder(h=spacer_height,d=spacer_diameter);
     translate([-up_x,-up_y,0]) cylinder(h=spacer_height,d=spacer_diameter);
     translate([bot_x,0,0]) cylinder(h=spacer_height,d=spacer_diameter);
