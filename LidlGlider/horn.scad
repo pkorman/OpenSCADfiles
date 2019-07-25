@@ -7,7 +7,7 @@ translate([0,22,0]) horn();
 
 module horn(){
     difference(){
-        linear_extrude(height=1.6) union(){
+        linear_extrude(height=1) union(){
             hull(){
                 translate([0,5,0]) square([18,0.2]);
                 translate([23,16,0]) circle(d=6);
