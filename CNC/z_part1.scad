@@ -2,7 +2,7 @@
 $fa=5;
 $fs=.4;
 
-total_height = 32;
+total_height = 48;
 mount_hole_y = (total_height - 12) / 2;
 
 difference(){
