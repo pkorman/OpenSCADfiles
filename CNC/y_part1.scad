@@ -13,7 +13,7 @@ m4screwinsert = 5.2;
 m4screwInsertHeight = 5;
 
 m5screwhole = 5.2;
-m5screwHeadDia = 8;
+m5screwHeadDia = 8.8;
 m5screwHeadOffset = 3;
 
 leadScrewOffset = 4;//-1;//4;;
@@ -21,7 +21,7 @@ leadScrewOffset = 4;//-1;//4;;
 mountHoleDistX = rdist + b1d + m5screwHeadDia + 0.4;
 mountHoleDistY = 20;
 
-total_height = mountHoleDistY + 12;
+total_height = mountHoleDistY + 12 + 2;
 
 p1x = mountHoleDistX + 12; //table base lenght
 p1y = 9;//table base width
@@ -54,6 +54,17 @@ module holes(){
         }
         translate([rdist/2,0,0]) circle(d=bearingdia);
         translate([-rdist/2,0,0]) circle(d=bearingdia);
+        
+        translate([rdist/4,0,0]) hull(){
+            translate([rdist/18,0,0]) circle(d=bearingdia);
+            translate([-rdist/36,0,0]) circle(d=bearingdia);
+        }
+        translate([-rdist/4,0,0]) hull(){
+            translate([-rdist/18,0,0]) circle(d=bearingdia);
+            translate([rdist/36,0,0]) circle(d=bearingdia);
+        }
+
+                
         circle(d=9.2);
     }
     translate([0,0,leadScrewOffset]) linear_extrude(height=46){
