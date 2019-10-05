@@ -19,9 +19,9 @@ m5screwHeadOffset = 3;
 leadScrewOffset = 4;//-1;//4;;
 
 mountHoleDistX = 60;//rdist + b1d + m5screwHeadDia + 0.4;
-mountHoleDistY = 60;
+mountHoleDistY = 28;
 
-total_height = mountHoleDistY + 12 + 2;
+total_height = mountHoleDistY + 20;
 
 p1x = mountHoleDistX + 12; //table base lenght
 p1y = 9;//table base width
