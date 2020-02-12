@@ -1,0 +1,6 @@
+
+
+https://cubehero.com/2013/11/19/know-only-10-things-to-be-dangerous-in-openscad/
+
+https://blog.prusaprinters.org/how-to-animate-models-in-openscad/
+https://medium.com/@urish/designing-3d-printable-mechanisms-in-openscad-5838dcb65b39
