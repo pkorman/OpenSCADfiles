@@ -25,8 +25,8 @@ difference(){
     holes_for_motor_and_bearing();
     motor_cut(0,-135/2);
     relief_hole(17,-17,23,-23);
-    relief_hole(39,27,40,-40);
-    relief_hole(-29,-37,40,-40);
+    relief_hole(49,27,40,-40);
+    relief_hole(-29,-47,40,-40);
 }
 
 
