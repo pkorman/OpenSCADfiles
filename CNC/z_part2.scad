@@ -64,7 +64,7 @@ module mount_hole_for_nut(x=0,y=0){
         linear_extrude(height=total_deep2){
             square([6,6],center=true);
         }
-        translate([0,0,2]) linear_extrude(height=total_deep2){
+        translate([0,0,1.2]) linear_extrude(height=total_deep2){
             square([6,10],center=true);
         }
     }
