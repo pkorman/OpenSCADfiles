@@ -24,7 +24,11 @@ difference(){
     holes_for_rod_holders();
     holes_for_motor_and_bearing();
     motor_cut(0,-135/2);
+    relief_hole(17,-17,23,-23);
+    relief_hole(39,27,40,-40);
+    relief_hole(-29,-37,40,-40);
 }
+
 
 
 module body_all(){
@@ -93,4 +97,14 @@ module holes_for_motor_and_bearing(){
     insert_hole(88/2-10,-135/2+5);
     insert_hole(-88/2+10,135/2-5);
     insert_hole(-88/2+10,-135/2+5);
+}
+
+module relief_hole(margin_X1=0,margin_X2=0,margin_Y1=0,margin_Y2=0){
+    corner_round = 5;
+    linear_extrude(height=total_deep2+2) hull(){
+        translate([margin_X1-corner_round,margin_Y1-corner_round,-1]) circle(d=2*corner_round);
+        translate([margin_X2+corner_round,margin_Y1-corner_round,-1]) circle(d=2*corner_round);
+        translate([margin_X1-corner_round,margin_Y2+corner_round,-1]) circle(d=2*corner_round);
+        translate([margin_X2+corner_round,margin_Y2+corner_round,-1]) circle(d=2*corner_round);
+    }
 }
