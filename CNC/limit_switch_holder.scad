@@ -36,8 +36,8 @@ module mounting_holes(){
         translate([13/2, -8/2, -1]) linear_extrude(height=height_switch+2) circle(d=2.4);
         translate([-13/2, 8/2, -1]) linear_extrude(height=height_switch+2) circle(d=2.4);
 
-        translate([13/2, -8/2, -1]) linear_extrude(height=5) circle(d=4);
-        translate([-13/2, 8/2, -1]) linear_extrude(height=5) circle(d=4);
+        translate([13/2, -8/2, -1]) linear_extrude(height=height_switch-1) circle(d=4);
+        translate([-13/2, 8/2, -1]) linear_extrude(height=height_switch-1) circle(d=4);
     }
 }
 
