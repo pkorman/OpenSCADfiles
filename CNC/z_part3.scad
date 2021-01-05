@@ -36,6 +36,7 @@ module test(){
 
 module body_all(){
     linear_extrude(height=part_height) square([part_width,part_deep],center=true);
+    translate([part_width/2,part_deep/2-10]) zip_bracket();
 }
 
 module holes(){
@@ -77,7 +78,9 @@ module cable_channel(){
     height_offset = channel_size/3;
     
     translate([0,0,height_offset]) rotate([0,45,0]) translate([0,0,-channel_size/2]) linear_extrude(height=channel_size) square([channel_size,part_deep],center=true);
-    translate([0,0,height_offset]) rotate([45,0,0]) translate([part_width/4,0,-channel_size/2]) linear_extrude(height=channel_size) square([part_width/2,channel_size],center=true); 
+    translate([0,0,height_offset]) rotate([45,0,0]) translate([part_width/4-10,0,-channel_size/2]) linear_extrude(height=channel_size) square([part_width/2-20,channel_size],center=true); 
+
+    translate([part_width/2-10,0,0]) linear_extrude(height=4.2) square([20,7.2],center=true);  
     
     translate([0,0,height_offset]) channel_round_cut();    
 }
@@ -100,5 +103,18 @@ module half_channel_round_cut(){
 
         translate([channel_diagonal*1.5,0,-channel_size]) linear_extrude(height=channel_size*2) square([channel_diagonal,channel_size*8],center=true);
         translate([0,channel_diagonal*1.5,-channel_size]) linear_extrude(height=channel_size*2) square([channel_size*8,channel_diagonal],center=true);
+    }
+}
+
+module zip_bracket(){
+    difference(){
+        linear_extrude(height=3){
+            square([7,10],center=false);
+            translate([7,5]) circle(d=10);
+        }
+        translate([0,0,-1]) linear_extrude(height=5){
+            translate([2,5]) circle(d=3.6);
+            translate([9,5]) circle(d=3.6);
+        }
     }
 }

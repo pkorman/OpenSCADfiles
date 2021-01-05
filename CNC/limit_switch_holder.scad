@@ -61,13 +61,13 @@ module body_all_v2(){
 }
 
 module mounting_holes_v2(drill=5.2){
-    translate([0,0,-1]) linear_extrude(height=20){
+    translate([0,0,0.2]) linear_extrude(height=20){
         translate([8,0,0]) circle(d=drill);
         translate([-8,0,0]) circle(d=drill);
     }
 
-    translate([0, -16.5, 0]) {
-        translate([13/2, -8/2, -1]) linear_extrude(height=4) circle(d=2.4);
-        translate([-13/2, 8/2, -1]) linear_extrude(height=4) circle(d=2.4);
+    translate([0, -16.5, 0.2]) {
+        translate([13/2, -8/2]) linear_extrude(height=4) circle(d=2.4);
+        translate([-13/2, 8/2]) linear_extrude(height=4) circle(d=2.4);
     }    
 }
