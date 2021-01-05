@@ -9,8 +9,9 @@ version_2();
 
 module version_2(){
     difference(){
-        body_all_v2();
-        mounting_holes_v2(/*drill=4.2*/);
+        //body_all_v2();
+        body_all_v3();
+        mounting_holes_v2(drill=4.2);
     }
 }
 
@@ -57,6 +58,20 @@ module body_all_v2(){
         translate([8,0,0]) circle(d=16);
         translate([-8,0,0]) circle(d=16);
         translate([0,-11.5,0]) square(size=[32, 23], center=true);
+    }
+}
+
+module body_all_v3(){
+    linear_extrude(height=2) hull(){
+        translate([8,0,0]) circle(d=16);
+        translate([-8,0,0]) circle(d=16);
+        translate([0,-11.5,0]) square(size=[32, 23], center=true);
+    }
+    linear_extrude(height=5.4) hull(){
+        translate([8,0,0]) circle(d=16);
+        translate([-8,0,0]) circle(d=16);
+        translate([0,-4,0]) square(size=[32, 8], center=true);
+
     }
 }
 
