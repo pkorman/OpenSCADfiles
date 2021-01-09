@@ -10,37 +10,39 @@ difference(){
     motor_hole();
     motor_mounting_holes();
     mounting_holes();
-    
+    end_stop_hole();
+    cable_chain_holes();
 }
 
 module body_all(){
+    h1=28;
+    h2=28;
+    h3=47;
+    h4=36;
+    
     linear_extrude(height=10){
-        translate([0,3,0]) square([88,6],center=true);
+        translate([0,h1/2,0]) square([88,h1],center=true);
         translate([0,43.5/2,0]) square([47,43.5],center=true);
     }
-    cable_mount();
+    
+    
 }
 
-module cable_mount(){
-    difference(){
-        translate([0,0,10]) hull(){
-            translate([0,-1,5]) linear_extrude(height=7) square([66,14],center=true);
-            translate([0,3,0]) linear_extrude(height=1) square([88,6],center=true);
-        }
-        translate([0,-5.5,0]) linear_extrude(height=30) square([43,10],center=true);
-        cable_mount_holes();
-    }
+
+module end_stop_hole(){
+    translate([0,43.5-4,5]) rotate([90,0,0]) insert_hole();
 }
 
-module cable_mount_holes(){
-    translate([27,-m4screwinsert/2,10]) insert_hole();
-    translate([-27,-m4screwinsert/2,10]) insert_hole();
+module cable_chain_holes(){
+    translate([-27,6.5,5]) rotate([180,0,0]) insert_hole();
+    translate([-27,21.5,5]) rotate([180,0,0]) insert_hole();
 }
+
 
 
 module motor_hole(){
     translate([0,20,9]) linear_extrude(height=20) square([43,43],center=true);
-    translate([0,20,-1]) linear_extrude(height=12) circle(d=21);
+    translate([0,20,-1]) linear_extrude(height=12) circle(d=22.4);
 }
 
 module motor_mounting_holes(){
@@ -57,17 +59,17 @@ module motor_mounting_hole(x=0,y=0){
 
 
 module mounting_holes(){
-    translate([0,10,5]) rotate([90,0,0]) linear_extrude(height=20){
+    translate([0,50,5]) rotate([90,0,0]) linear_extrude(height=100){
         translate([-34,0,0]) circle(d=4.2);
         translate([34,0,0]) circle(d=4.2);
     }
 }
 
 module insert_hole(x=0,y=0){
-    translate([x,y,0]) linear_extrude(height=6){
+    translate([x,y,0.2]) linear_extrude(height=10){
         circle(d=m4screwinsert);
     }
-    translate([x,y,6.4]) linear_extrude(height=10){
+    translate([x,y,-10.2]) linear_extrude(height=10){
         circle(d=m4screwhole);
     }
 } 
