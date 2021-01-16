@@ -9,13 +9,13 @@ relay_offset_x=-10;
 relay_offset_y=-12;
 
 body();
-translate([-101/2-1.6-(27.2+3.2)/2,0,0]) va_box();
+//translate([-101/2-1.6-(27.2+3.2)/2,0,0]) va_box();
 
 module va_box(){
     difference(){
         translate([0,0,-1.6]) linear_extrude(height=38+1.6) square([27.2+3.2,46.4+3.2],center=true);
         linear_extrude(height=39) square([27.2,46.4],center=true);
-        translate([10,51/2-15,5]) va_cord_hole();
+        translate([10,51/2-15,8]) va_cord_hole();
     }
 }
 
@@ -27,7 +27,7 @@ module body(){
         power_cord();
         spindle_cord();
         translate([101/2,51/2-30.5,53]) mounting_screw_hole();
-        translate([-101/2,51/2-15,5]) va_cord_hole();
+        translate([-101/2,51/2-15,8]) va_cord_hole();
         cut_off();
         translate([relay_offset_x,relay_offset_y,0]) relay_mount_holes();
     }
@@ -70,7 +70,12 @@ module mounting_screw_hole(){
 
 module va_cord_hole(){
     rotate([0,90,0]) 
-    translate([0,0,-10]) linear_extrude(height=20) circle(d=10);
+    translate([0,0,-10])
+        linear_extrude(height=20) 
+            hull(){
+                translate([-2.5,0,0]) circle(d=10);
+                translate([2.5,0,0]) circle(d=10);
+            }
 }
 
 module relay_stands(){
