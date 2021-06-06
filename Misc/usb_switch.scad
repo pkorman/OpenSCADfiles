@@ -17,7 +17,7 @@ module box(){
 module switch(){
     linear_extrude(height=1) circle(d=8);
     linear_extrude(height=9) circle(d=6.2);
-    translate([0,0,-11]) linear_extrude(height=11) square([23,13.2],center=true);
+    translate([0,0,-11]) linear_extrude(height=11) square([24,13.2],center=true);
 }
 
 module usb_con(){
