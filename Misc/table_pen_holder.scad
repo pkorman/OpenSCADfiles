@@ -10,19 +10,24 @@ part_width = 10;
 join_len = 40+2*part_width;
 
 
-rotate([90,0,0]) main();
+//rotate([90,0,0]) main();
 
 //holder();
-//joiner();
+joiner();
 
 module main(){
-    holder();
-    translate([0,0,join_len-part_width]) holder();
+    translate([0,0,-2]) holder();
+    translate([0,0,join_len-part_width+2]) holder();
     rotate([0,-90,0]) joiner();
 }
 
 module joiner(){
-    linear_extrude(height=wall_thick/2) square([join_len,tab_ext],center=false);
+    b = D_pen/2 + wall_thick - tab_ext;
+    union(){
+        linear_extrude(height=wall_thick/2) square([join_len,tab_ext],center=false);
+        
+        translate([part_width,-b,0]) linear_extrude(height=wall_thick/2) square([join_len-2*part_width,tab_ext+2*b],center=false);
+    }
 }
 
 module holder(){
