@@ -4,9 +4,11 @@ $fs=.4;
 
 insertDiameter = 5.5;
 screwDiameter = 3.5;
-armThickness = 4;
+armThickness = 7;
 middleBodyHeight = 8;
-baseToMountOffset = 15 + middleBodyHeight;
+baseToMountOffset = 15 + middleBodyHeight;//15
+railMountDeep = 12;
+railMountHoleOffset = -2;
 
 union(){
     middlebody();
@@ -19,11 +21,13 @@ union(){
 }
 
 module middlebody(){
-    translate([0,-6,0])
+    translate([0,-railMountDeep/2,0])
     difference(){
-        linear_extrude(height=middleBodyHeight) square([20,12],center=true);
+        linear_extrude(height=middleBodyHeight) square([20,railMountDeep],center=true);
+        translate([0,railMountHoleOffset,0]) union(){
         linear_extrude(height=5) circle(d=insertDiameter);
         linear_extrude(height=middleBodyHeight+1) circle(d=screwDiameter);
+        }
     }
 }
 
